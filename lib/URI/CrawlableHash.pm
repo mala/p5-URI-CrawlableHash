@@ -12,6 +12,8 @@ sub convert_always {
     my ( $class, $option ) = @_;
     no warnings 'redefine';
 
+    $option ||= "query";
+
     my $orig = URI->can('new');
     my $conv  = $class->can("convert_to_" . $option);
     unless ($conv) { die "unknown option: " . $option }
@@ -112,7 +114,11 @@ URI::CrawlableHash - convert ajax uri to crawlable
   use URI::CrawlableHash;
 
   my $uri = URI->new("http://example.com/#!key1=value1&key2=value2");
+
+  # uri for crawler
   $uri->fragment_to_query; # http://example.com/?_escaped_fragment_=key1=value1%26key2=value2
+
+  # uri for browser
   $uri->query_to_fragment; # http://example.com/#!key1=value1&key2=value2
 
   # always convert to #! (Google says pretty url)
@@ -143,17 +149,17 @@ See also HTML5's history.pushState or history.replaceState http://www.w3.org/TR/
 
 =head2  fragment_to_query
 
- This method return ugly URI. Note that this is destructive method.
+This method return ugly URI. Note that this is destructive method.
 
- If you want new object, call $uri->clone before call this method.
+If you want new object, call $uri->clone before call this method.
 
 =head2  query_to_fragment
 
- This method return pretty URI. This method is destructive itself too.
+This method return pretty URI. This method is destructive itself too.
 
 =head2 convert_always
 
- This method will make you happy or crash everything. please read source.
+This method will make you happy or crash everything. please read source.
  
 =head1 AUTHOR
 
@@ -161,7 +167,7 @@ mala E<lt>cpan@ma.laE<gt>
 
 =head1 SEE ALSO
 
- L<URI>
+L<URI>
 
 =head1 LICENSE
 

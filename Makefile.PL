@@ -8,7 +8,7 @@ requires 'Guard';
 
 tests 't/*.t';
 author_tests 'xt';
-repository 'git://github.com/mala/AnyEvent-Curl.git';
+repository 'git://github.com/mala/p5-URI-CrawlableHash.git';
 
 build_requires 'Test::More';
 use_test_base;
