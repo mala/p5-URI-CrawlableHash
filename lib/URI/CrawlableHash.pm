@@ -151,7 +151,7 @@ See also HTML5's history.pushState or history.replaceState http://www.w3.org/TR/
 
  This method return pretty URI. This method is destructive itself too.
 
-=head2 always_convert
+=head2 convert_always
 
  This method will make you happy or crash everything. please read source.
  
