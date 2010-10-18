@@ -9,16 +9,16 @@ my $uri2 = URI->new("http://example.com/#!key1=value1&key2=value2");
 is ($uri2, "http://example.com/?_escaped_fragment_=key1=value1%26key2=value2", "always to query");
 
 undef $guard;
-my $uri2 = URI->new("http://example.com/#!key1=value1&key2=value2");
+$uri2 = URI->new("http://example.com/#!key1=value1&key2=value2");
 is ($uri2, "http://example.com/#!key1=value1&key2=value2", "restore");
 
 
-my $guard = URI::CrawlableHash->convert_always("hash");
+$guard = URI::CrawlableHash->convert_always("hash");
 my $uri = URI->new('http://example.com/?_escaped_fragment_=key1=value1%26key2=value2', "always to pretty");
 is ($uri,  "http://example.com/#!key1=value1&key2=value2", "to hash");
 
 undef $guard;
-my $uri = URI->new('http://example.com/?_escaped_fragment_=key1=value1%26key2=value2', "restore");
+$uri = URI->new('http://example.com/?_escaped_fragment_=key1=value1%26key2=value2', "restore");
 is ($uri, "http://example.com/?_escaped_fragment_=key1=value1%26key2=value2");
 
 
